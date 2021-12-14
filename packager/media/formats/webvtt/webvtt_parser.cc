@@ -88,7 +88,7 @@ bool ParsePercent(const std::string& str, float* value) {
 
   double temp;
   base::StringToDouble(match[1], &temp);
-  if (temp >= 100) {
+  if (temp > 100) {
     return false;
   }
   *value = temp;
@@ -105,7 +105,7 @@ bool ParseDoublePercent(const std::string& str, float* a, float* b) {
   double tempA, tempB;
   base::StringToDouble(match[1], &tempA);
   base::StringToDouble(match[2], &tempB);
-  if (tempA >= 100 || tempB >= 100) {
+  if (tempA > 100 || tempB > 100) {
     return false;
   }
   *a = tempA;
