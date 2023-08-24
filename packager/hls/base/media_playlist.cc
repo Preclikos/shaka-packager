@@ -370,6 +370,10 @@ void MediaPlaylist::SetCharacteristicsForTesting(
   characteristics_ = characteristics;
 }
 
+void MediaPlaylist::SetForcedForTesting(const bool forced) {
+  forced_ = forced;
+}
+
 bool MediaPlaylist::SetMediaInfo(const MediaInfo& media_info) {
   const int32_t time_scale = GetTimeScale(media_info);
   if (time_scale == 0) {
@@ -396,6 +400,8 @@ bool MediaPlaylist::SetMediaInfo(const MediaInfo& media_info) {
   characteristics_ =
       std::vector<std::string>(media_info_.hls_characteristics().begin(),
                                media_info_.hls_characteristics().end());
+
+  forced_ = media_info_.forced();
 
   return true;
 }
